@@ -22,7 +22,7 @@ except ImportError:
     sys.exit(1)
 
 # ─── Constants ────────────────────────────────────────────────────────────────
-REPO_URL    = "https://github.com/Ekrol34/AlceEngine-Project"
+REPO_URL    = "https://github.com/Ekrol34/AlceEngine"
 AUTHOR_URL  = "https://github.com/Ekrol34"
 CONFIG_FILE = os.path.join(os.path.expanduser("~"), ".alce_manager.json")
 
@@ -40,7 +40,6 @@ KNOWN_EDITORS = [
 ]
 
 # ─── icon.ico PNG payload — embedded as base64 ────────────────────────────────
-# Extracted from the ICO container; loaded via tk.PhotoImage (no Pillow needed)
 _ICON_B64 = (
     "iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAAAW9yTlQBz6J3mgAAEr9JREFUeNrtnY2O"
     "47wNRYfv/86XLdAP7ew2sWxTP6R0MhCw2JkotiMeXVIU9eOSXzZvtdbr+fv15O3N7mPX//Pz80+zX/+"
@@ -50,7 +49,7 @@ _ICON_B64 = (
     "zmXpNEOm6MZvHXQhboRb+6TNo/zcMVENbPN9gFgB8AQA6XMA1AHAByscAegDANwOAegEgFAJQfwAIBUA"
     "bAIAPwTkUwBEKAABUX134Ghfq4gIIAAQn4CUAUEcAGOvzByqA9S6ADwGAUAAoAFyANAB4EN/3BwDQmS6"
     "ATwWAHZ6AAwAaa3vEAD4DQDsrAHb8AYBsMYDReTbD83geKwg94hPpt7WbWj+NCSA8wQQNtA2I659mqnv"
-    "cQFUMAJ4SAGcF+ywPALwYADwdABwA0Oa5SfYcAN5RAaiqAhAAiAPAfnAJcAEKuwA6AQB+CQD99SBaSysY"
+    "cQFUMAJ4SAGcF+ywPALwYADwdABwA0Oa5SfYcAN5RAaiqAhAAiAPAfnAJcAEKOwA6AQB+CQD99SBaSysY"
     "EQAgBtABAD4BANrGBTBWDroCwAHALjEArXIBMEQUwDEAUBYAiCAgDQCMBMDqRL/fW28/fgGtB9Dcytl+"
     "RL0AYCQLpbvnaEGbeEGPYKLPYEB1A4C/eECuGzdYCAC0fJDICADVAIAmK4C3ANB8ABjLetuUBKuiADy5"
     "AlgHABQAbScAKKELIABA0Y0sqb42BQB/1Q25MNDrVJRjYgBPAOArASAUwLkKwAkCdgeAIg9I6RWA9Q5W"
@@ -84,7 +83,7 @@ _ICON_B64 = (
     "CAHAAsNQFUE8X4JBlQOECoACC2VXEAKIGqmKAsa0OCtkSADpJAWg0ABTyowkCji3quQEAxr5aABkOgOQ"
     "FSej/7EShdkEdBQuGNMZ/GgBYZQCs3q+/eBnQvn+HACAKgOeppnoLAGVSAIYCoH8AEC8ZFlQAWgUAXAD6"
     "BwDrAZA9BiAA0KF/bQUAAYBzAJBCAQRk0sizAVEAAGAjABguAAB47KTOWAK0wPIjACAGQP8ogIcA0EwA"
-    "XBf2jx6sMdIANWGAtAEYS4QCAJsDwNt7SS4L9jQFQiMRLoqQeQB4v5tNKwHgAGC+8O/z/dosAOjbZt6"
+    "XBf2jx6sMdIANWGAtAEYS4QCAJsDwNt7SS4L9jQFQiMRLoqQeQB4v5tNKwHgAGC+8O/z/domAOjbZt6"
     "DAPD4YVuOVNOtACAUQBYF4LcAoBkA8EcA8EQuAADABci+l2C4C6DlCkBbAMBe5iEAABTAHQA4MQAUwDI"
     "DVVv/CwAQBDwNALYUAPZX/88ddKEAAAAAQAE86l8VACAA8AEAPgIACv6sT8QZXxOwvo+u16ZXvSRXlEH9"
     "tpOPSfULFwR5ZOybAMDIBHzev8UOeIn9/biTpVo2GB+/KgwAdVYA9vzM9vcPyFEAO5XttnfwiDob0dOB"
@@ -133,7 +132,7 @@ _LOGO_B64 = (
     "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKqIiBDSMIH6CKBNSb+SKCF1SH/+HKRD"
-    "1kkAnUrmlaSVpAipYdL5c68TAdRPAGuVLAhAfVjIn4N0SAQACAAQACAAQACAAAABAAIABAAIAGougEwm"
+    "1kkAnUrmlaSVpAipYdL5c68TAdRPAGuVLAhAfVjIn4N0SAQACAAQACAAQACAAAABAAIABAAIAGaugEwm"
     "I+l0WpLJpKRSKUIcRz1n1HNHPYcQQJMKYG5uTmKxmAwMDEg0GiXEcdRzRj131HMIATSpAOLxuHR1dar"
     "/dwhxHfXcUc8hBNCkApiampK+vj5OZuIp6rmjnkMIAAEQBIAAEABBAAgAARAEgAAQAEEACKCJBdB21RLZ"
     "sOJa6V+1XPpXBi93dayWwc2bGNYzSX9/v7S1tSGAsArgxvaITN67VT7bPSTndu9QMlQmOywzr8mQyTbc"
@@ -301,24 +300,90 @@ def delete_project_folder(path, log_cb, done_cb):
         done_cb(False, str(e))
 
 
-def create_branch(branch_name, log_cb, done_cb):
+def create_branch(branch_name, project_path, log_cb, done_cb):
+    """
+    Creates a new branch on the remote repo containing only:
+      - ./Source/Alce/  (entire subtree, relative to selected project root)
+      - ./Build/cli.py  (relative to selected project root)
+    The rest of the remote tree is cleared on that branch.
+    """
     if branch_name.lower() in ("main", "master"):
         done_cb(False, "Branch name 'main' or 'master' is not allowed.")
         return
+
     import tempfile
+
+    # ── Validate source paths before touching the remote ─────────────────────
+    src_alce = os.path.join(project_path, "Source", "Alce")
+    src_cli  = os.path.join(project_path, "Build",  "cli.py")
+
+    if not os.path.isdir(src_alce):
+        done_cb(False,
+                f"Source/Alce directory not found in the selected project:\n{src_alce}\n\n"
+                "Make sure the project contains a Source/Alce subfolder.")
+        return
+    if not os.path.isfile(src_cli):
+        done_cb(False,
+                f"Build/cli.py not found in the selected project:\n{src_cli}\n\n"
+                "Make sure the project contains Build/cli.py.")
+        return
+
     tmp = tempfile.mkdtemp(prefix="alce_tmp_")
     try:
+        # ── Clone remote to temp dir ──────────────────────────────────────────
         log_cb("  Connecting to remote repository...")
         repo = git.Repo.clone_from(REPO_URL, tmp)
-        if branch_name in [r.name for r in repo.branches]:
-            done_cb(False, f"Branch '{branch_name}' already exists.")
+
+        # ── Check branch doesn't already exist remotely ───────────────────────
+        remote_branches = [ref.remote_head for ref in repo.remotes.origin.refs]
+        if branch_name in remote_branches:
+            done_cb(False, f"Branch '{branch_name}' already exists on the remote.")
             return
+
+        # ── Create and switch to the new branch ───────────────────────────────
         log_cb(f"  Creating branch '{branch_name}'...")
-        nb = repo.create_head(branch_name); nb.checkout()
+        new_branch = repo.create_head(branch_name)
+        new_branch.checkout()
+
+        # ── Clear entire working tree (keep .git) ─────────────────────────────
+        log_cb("  Clearing default tree...")
+        for item in os.listdir(tmp):
+            if item == ".git":
+                continue
+            item_path = os.path.join(tmp, item)
+            if os.path.isdir(item_path):
+                shutil.rmtree(item_path)
+            else:
+                os.remove(item_path)
+
+        # ── Copy Source/Alce ──────────────────────────────────────────────────
+        log_cb("  Copying Source/Alce ...")
+        dst_alce = os.path.join(tmp, "Source", "Alce")
+        shutil.copytree(src_alce, dst_alce)
+
+        # ── Copy Build/cli.py ─────────────────────────────────────────────────
+        log_cb("  Copying Build/cli.py ...")
+        dst_build = os.path.join(tmp, "Build")
+        os.makedirs(dst_build, exist_ok=True)
+        shutil.copy2(src_cli, os.path.join(dst_build, "cli.py"))
+
+        # ── Stage all changes ─────────────────────────────────────────────────
+        log_cb("  Staging files...")
+        repo.git.add(A=True)
+
+        # ── Commit ────────────────────────────────────────────────────────────
+        log_cb("  Committing...")
+        repo.index.commit(
+            f"feat({branch_name}): upload Source/Alce and Build/cli.py"
+        )
+
+        # ── Push new branch to remote ─────────────────────────────────────────
         log_cb("  Pushing branch to remote...")
-        repo.remotes.origin.push(branch_name)
+        repo.remotes.origin.push(refspec=f"{branch_name}:{branch_name}")
+
         log_cb(f"  Branch '{branch_name}' created and pushed ✓")
         done_cb(True, branch_name)
+
     except git.GitCommandError as e:
         done_cb(False, f"Git error: {e.stderr or str(e)}")
     except Exception as e:
@@ -356,8 +421,6 @@ def _rrect(canvas, x1, y1, x2, y2, r, fill="", outline="black", width=1):
 
 # ─── Tooltip ─────────────────────────────────────────────────────────────────
 class Tooltip:
-    """Simple follow-cursor tooltip that appears after a short delay."""
-
     def __init__(self, widget, text):
         self._widget = widget
         self._text   = text
@@ -384,7 +447,6 @@ class Tooltip:
                  font=("Courier New", 8),
                  relief="flat", bd=0,
                  padx=8, pady=4).pack()
-        # Thin accent border via a 1-px frame
         tw.configure(bg="#5B8CFF")
         inner = tw.winfo_children()[0]
         inner.pack_configure(padx=1, pady=1)
@@ -400,11 +462,6 @@ class Tooltip:
 
 # ─── IconBtn ──────────────────────────────────────────────────────────────────
 class IconBtn(tk.Canvas):
-    """
-    Pill-shaped button. No shadow lines — clean capsule with border.
-    Hover: brighter fill. Press: shrinks + darkens.
-    """
-
     def __init__(self, parent, text, icon, color, command=None, width=140,
                  bg=None, tooltip=None, **kw):
         self._panel_bg = bg or "#13161E"
@@ -439,18 +496,10 @@ class IconBtn(tk.Canvas):
     def _draw(self, pressed=False):
         self.delete("all")
         W, H = int(self["width"]), int(self["height"])
-
-        # Fill entire canvas with panel bg to erase any corner artefacts
         self.create_rectangle(0, 0, W, H, fill=self._panel_bg, outline="")
-
-        # Inset padding on press
         pad = 2 if pressed else 0
-        x1 = pad + 2
-        y1 = pad + 2
-        x2 = W - pad - 2
-        y2 = H - pad - 2
-        r  = (y2 - y1) // 2   # full capsule
-
+        x1 = pad + 2; y1 = pad + 2; x2 = W - pad - 2; y2 = H - pad - 2
+        r  = (y2 - y1) // 2
         if pressed:
             fill   = self._scale(self._color, 0.68)
             border = self._scale(self._color, 0.50)
@@ -460,11 +509,8 @@ class IconBtn(tk.Canvas):
         else:
             fill   = self._color
             border = self._scale(self._color, 0.72)
-
         _rrect(self, x1, y1, x2, y2, r, fill=fill, outline=border, width=1)
-
-        cx = (x1 + x2) // 2
-        cy = (y1 + y2) // 2
+        cx = (x1 + x2) // 2; cy = (y1 + y2) // 2
         self.create_text(cx, cy, text=self._text,
                          fill="#FFFFFF", font=FONT_HEAD, anchor="center")
 
@@ -475,8 +521,6 @@ class IconBtn(tk.Canvas):
 
 # ─── ThemeToggle ──────────────────────────────────────────────────────────────
 class ThemeToggle(tk.Canvas):
-    """Same pill design as IconBtn — cycles dark/light on click."""
-
     W_BTN = 110
     H_BTN = 38
 
@@ -517,15 +561,10 @@ class ThemeToggle(tk.Canvas):
         self.delete("all")
         W, H = self.W_BTN, self.H_BTN
         col  = "#88AAFF" if self._hov else ACCENT
-
-        # Cover entire canvas with bg colour first
         self.create_rectangle(0, 0, W, H, fill=self._bg, outline="")
-
         pad = 2 if self._pressed else 0
-        x1 = pad + 2; y1 = pad + 2
-        x2 = W - pad - 2; y2 = H - pad - 2
+        x1 = pad + 2; y1 = pad + 2; x2 = W - pad - 2; y2 = H - pad - 2
         r  = (y2 - y1) // 2
-
         if self._pressed:
             fill   = self._scale(col, 0.68)
             border = self._scale(col, 0.50)
@@ -535,117 +574,334 @@ class ThemeToggle(tk.Canvas):
         else:
             fill   = col
             border = self._scale(col, 0.72)
-
         _rrect(self, x1, y1, x2, y2, r, fill=fill, outline=border, width=1)
-
         icon  = "☀" if self._theme == "light" else "☾"
         label = f"{icon}  {'LIGHT' if self._theme == 'light' else 'DARK'}"
-        cx    = (x1 + x2) // 2
-        cy    = (y1 + y2) // 2
+        cx = (x1 + x2) // 2; cy = (y1 + y2) // 2
         self.create_text(cx, cy, text=label,
                          fill="#FFFFFF", font=FONT_HEAD, anchor="center")
 
 
-# ─── ProjectCard ──────────────────────────────────────────────────────────────
-class ProjectCard(tk.Frame):
-    def __init__(self, parent, project, on_select, on_delete, on_open, palette, icon_img=None, **kw):
+# ─── EmptyState ───────────────────────────────────────────────────────────────
+class EmptyState(tk.Canvas):
+    """
+    Canvas-drawn empty state. Shows an animated dot-grid background,
+    a centred card with icon and message, and a clickable NEW pill.
+
+    Hover/click are handled via canvas-level Motion and Button-1 bindings
+    (no tag_bind) to avoid crashes when items are deleted on redraw.
+    """
+
+    def __init__(self, parent, palette, on_new, **kw):
+        self._pal          = palette
+        self._on_new       = on_new
+        self._anim_offset  = 0
+        self._anim_id      = None
+        self._pill_hovered = False
+        self._pill_coords  = None   # (bx1, by1, bx2, by2) updated each draw
+        super().__init__(parent, bg=palette["BG_DARK"],
+                         highlightthickness=0, bd=0, **kw)
+        self.bind("<Configure>", lambda _: self.after_idle(self._draw))
+        self.bind("<Motion>",    self._on_motion)
+        self.bind("<Leave>",     self._on_leave)
+        self.bind("<Button-1>",  self._on_click)
+
+    def update_palette(self, palette):
         self._pal = palette
-        super().__init__(parent, bg=palette["BG_CARD"], **kw)
-        self._project   = project
+        self.configure(bg=palette["BG_DARK"])
+        self._draw()
+
+    # ── Coordinate helpers ────────────────────────────────────────────────────
+    def _in_pill(self, x, y):
+        if not self._pill_coords:
+            return False
+        bx1, by1, bx2, by2 = self._pill_coords
+        return bx1 <= x <= bx2 and by1 <= y <= by2
+
+    # ── Canvas events ─────────────────────────────────────────────────────────
+    def _on_motion(self, event):
+        over = self._in_pill(event.x, event.y)
+        if over != self._pill_hovered:
+            self._pill_hovered = over
+            self.configure(cursor="hand2" if over else "arrow")
+            self._draw()
+
+    def _on_leave(self, event):
+        if self._pill_hovered:
+            self._pill_hovered = False
+            self.configure(cursor="arrow")
+            self._draw()
+
+    def _on_click(self, event):
+        if self._in_pill(event.x, event.y):
+            self._on_new()
+
+    # ── Drawing ───────────────────────────────────────────────────────────────
+    def _draw(self):
+        self.delete("all")
+        W = self.winfo_width()
+        H = self.winfo_height()
+        if W < 10 or H < 10:
+            return
+        pal = self._pal
+
+        # ── Animated dot grid ─────────────────────────────────────────────────
+        dot_gap = 26
+        off     = self._anim_offset % dot_gap
+        for gx in range(-dot_gap, W + dot_gap, dot_gap):
+            for gy in range(-dot_gap, H + dot_gap, dot_gap):
+                x, y = gx + off, gy + off
+                self.create_oval(x - 1, y - 1, x + 1, y + 1,
+                                 fill=pal["TEXT_DIM"], outline="")
+
+        # ── Card geometry ─────────────────────────────────────────────────────
+        cw = min(W - 60, 340)
+        ch = 210
+        cx = W // 2
+        cy = H // 2
+        x1, y1 = cx - cw // 2, cy - ch // 2
+        x2, y2 = cx + cw // 2, cy + ch // 2
+
+        # Drop shadow
+        self.create_rectangle(x1 + 6, y1 + 6, x2 + 6, y2 + 6,
+                               fill="#000000", outline="", stipple="gray25")
+        # Card body
+        _rrect(self, x1, y1, x2, y2, 12,
+               fill=pal["BG_CARD"], outline=pal["BORDER"], width=1)
+        # Accent top bar
+        _rrect(self, x1 + 1, y1 + 1, x2 - 1, y1 + 5, 6,
+               fill=ACCENT, outline="")
+
+        # ── Hex glyph ─────────────────────────────────────────────────────────
+        self.create_text(cx, cy - 48, text="⬡",
+                         fill=pal["TEXT_DIM"], font=("Courier New", 44))
+        self.create_text(cx, cy - 48, text="⊕",
+                         fill=ACCENT, font=("Courier New", 20, "bold"))
+
+        # ── Heading ───────────────────────────────────────────────────────────
+        self.create_text(cx, cy + 6,
+                         text="NO PROJECTS YET",
+                         fill=pal["TEXT_PRI"],
+                         font=("Courier New", 12, "bold"),
+                         anchor="center")
+
+        # ── Hint ──────────────────────────────────────────────────────────────
+        self.create_text(cx, cy + 26,
+                         text="Clone the AlceEngine repo to get started",
+                         fill=pal["TEXT_SEC"],
+                         font=("Courier New", 8),
+                         anchor="center")
+
+        # ── NEW pill ──────────────────────────────────────────────────────────
+        bw, bh = 126, 28
+        bx1 = cx - bw // 2
+        by1 = cy + 50
+        bx2 = cx + bw // 2
+        by2 = by1 + bh
+        self._pill_coords = (bx1, by1, bx2, by2)   # stored for hit-testing
+        pill_col = "#7AAAFF" if self._pill_hovered else ACCENT
+        _rrect(self, bx1, by1, bx2, by2, bh // 2,
+               fill=pill_col, outline="")
+        self.create_text(cx, (by1 + by2) // 2,
+                         text="⊕  NEW PROJECT",
+                         fill="#FFFFFF",
+                         font=("Courier New", 8, "bold"))
+
+    # ── Animation ─────────────────────────────────────────────────────────────
+    def start_anim(self):
+        self._tick()
+
+    def stop_anim(self):
+        if self._anim_id:
+            self.after_cancel(self._anim_id)
+            self._anim_id = None
+
+    def _tick(self):
+        self._anim_offset += 1
+        self._draw()
+        self._anim_id = self.after(55, self._tick)
+
+
+# ─── ProjectCard ──────────────────────────────────────────────────────────────
+class ProjectCard(tk.Canvas):
+    """
+    Fully Canvas-drawn project card. No nested Frame widgets.
+    Features:
+      - Rounded card body with accent left bar
+      - Status dot (green = on disk, red = missing)
+      - Size badge (teal outline pill)
+      - Hover highlight
+      - Selection state (bright accent bar)
+      - Circular delete button on the right
+    """
+
+    CARD_H = 76
+    RADIUS = 8
+    BAR_W  = 4
+
+    def __init__(self, parent, project, on_select, on_delete, on_open,
+                 palette, icon_img=None, **kw):
+        self._pal      = palette
+        self._project  = project
         self._on_select = on_select
         self._on_delete = on_delete
         self._on_open   = on_open
-        self._selected  = False
-        self._icon_img  = icon_img   # tk.PhotoImage for the card icon
-        self._build()
-        self._bind_all(self)
+        self._selected    = False
+        self._hovered     = False
+        self._del_hovered = False
+        self._icon_img    = icon_img
+        self._del_coords  = None
 
-    def _build(self):
+        super().__init__(parent,
+                         height=self.CARD_H,
+                         bg=palette["BG_DARK"],
+                         highlightthickness=0, bd=0,
+                         cursor="hand2", **kw)
+
+        self.bind("<Configure>",       lambda _: self._draw())
+        self.bind("<Enter>",           lambda _: self._set_hover(True))
+        self.bind("<Leave>",           self._on_leave)
+        self.bind("<Motion>",          self._on_motion)
+        self.bind("<Button-1>",        self._on_click)
+        self.bind("<Double-Button-1>", self._on_dclick)
+
+    # ── Public ────────────────────────────────────────────────────────────────
+    def set_selected(self, val):
+        self._selected = val
+        self._draw()
+
+    def update_palette(self, palette):
+        self._pal = palette
+        self.configure(bg=palette["BG_DARK"])
+        self._draw()
+
+    # ── Drawing ───────────────────────────────────────────────────────────────
+    def _draw(self):
+        self.delete("all")
+        W  = self.winfo_width()
+        H  = self.CARD_H
+        if W < 10:
+            return
+
         pal    = self._pal
         name   = self._project.get("nombre", "—")
         path   = self._project.get("ruta",   "—")
         exists = os.path.exists(path)
         size   = folder_size(path)
 
-        # Left accent bar
-        self._bar = tk.Frame(self, bg=pal["TEXT_DIM"], width=3)
-        self._bar.pack(side="left", fill="y")
+        # Reserve space for delete button on the right
+        r_del    = 13
+        del_margin = r_del * 2 + 16   # total right margin used by delete btn
 
-        # Icon column
-        icon_frame = tk.Frame(self, bg=pal["BG_CARD"])
-        icon_frame.pack(side="left", padx=(8, 4), pady=10)
+        # ── Card background ───────────────────────────────────────────────────
+        bg = pal["BG_HOVER"] if (self._selected or self._hovered) else pal["BG_CARD"]
+        _rrect(self, 1, 1, W - 1, H - 1, self.RADIUS,
+               fill=bg, outline=pal["BORDER"], width=1)
+
+        # ── Left accent bar ───────────────────────────────────────────────────
+        bar_col = ACCENT if self._selected else pal["TEXT_DIM"]
+        _rrect(self, 1, 6, self.BAR_W + 3, H - 6, 3,
+               fill=bar_col, outline="")
+
+        # ── Status indicator circle ───────────────────────────────────────────
+        dot_col = SUCCESS if exists else DANGER
+        dot_x, dot_y = 22, H // 2
+        self.create_oval(dot_x - 7, dot_y - 7, dot_x + 7, dot_y + 7,
+                         fill=dot_col, outline="")
+        self.create_oval(dot_x - 3, dot_y - 3, dot_x + 3, dot_y + 3,
+                         fill="#FFFFFF", outline="")
+
+        # ── Icon image (if any) ───────────────────────────────────────────────
         if self._icon_img:
-            icon_lbl = tk.Label(icon_frame, image=self._icon_img,
-                                bg=pal["BG_CARD"])
-            icon_lbl.image = self._icon_img   # keep strong reference — prevents GC
-            icon_lbl.pack()
-        else:
-            # Fallback: coloured dot
-            dot_color = SUCCESS if exists else DANGER
-            tk.Label(icon_frame, text="●", fg=dot_color,
-                     bg=pal["BG_CARD"], font=("Courier New", 10)).pack()
-
-        # Body
-        body = tk.Frame(self, bg=pal["BG_CARD"])
-        body.pack(side="left", fill="both", expand=True, padx=(0, 6), pady=10)
-
-        # Row 0: name + size
-        top = tk.Frame(body, bg=pal["BG_CARD"])
-        top.pack(fill="x")
-
-        lbl_name = tk.Label(top, text=name, fg=pal["TEXT_PRI"],
-                            bg=pal["BG_CARD"], font=FONT_HEAD, anchor="w")
-        lbl_name.pack(side="left")
-
-        size_lbl = tk.Label(top, text=size, fg=ACCENT2,
-                            bg=pal["BG_CARD"], font=("Courier New", 8, "bold"))
-        size_lbl.pack(side="left", padx=(8, 0), pady=(2, 0))
-
-        # Row 1: path + status
-        status = "on disk" if exists else "folder not found"
-        lbl_path = tk.Label(body, text=f"{path}  ·  {status}",
-                            fg=pal["TEXT_SEC"], bg=pal["BG_CARD"],
-                            font=FONT_SMALL, anchor="w")
-        lbl_path.pack(fill="x")
-
-        # Delete button
-        del_btn = tk.Label(self, text=" ✕ ", fg=pal["TEXT_DIM"],
-                           bg=pal["BG_CARD"], font=("Courier New", 11, "bold"),
-                           cursor="hand2")
-        del_btn.pack(side="right", padx=10)
-        del_btn.bind("<Button-1>", lambda _: self._on_delete(self._project))
-        del_btn.bind("<Enter>",    lambda _: del_btn.config(fg=DANGER))
-        del_btn.bind("<Leave>",    lambda _: del_btn.config(fg=pal["TEXT_DIM"]))
-
-    def _bind_all(self, w):
-        w.bind("<Button-1>",        lambda _: self._on_select(self._project))
-        w.bind("<Double-Button-1>", lambda _: self._on_open(self._project))
-        for child in w.winfo_children():
-            if child.__class__.__name__ != "Label" or child.cget("cursor") == "hand2":
-                continue
-            self._bind_all(child)
-        # Also bind body children
-        for child in w.winfo_children():
             try:
-                if child.cget("cursor") != "hand2":
-                    child.bind("<Button-1>",        lambda _: self._on_select(self._project))
-                    child.bind("<Double-Button-1>", lambda _: self._on_open(self._project))
-                    self._bind_all(child)
+                self.create_image(dot_x, dot_y, image=self._icon_img, anchor="center")
             except Exception:
                 pass
 
-    def set_selected(self, val):
-        self._selected = val
-        pal = self._pal
-        self._bar.config(bg=ACCENT if val else pal["TEXT_DIM"])
-        bg = pal["BG_HOVER"] if val else pal["BG_CARD"]
-        self._recolor(self, bg)
+        # ── Name (top-left text area) ─────────────────────────────────────────
+        text_x = 38
+        self.create_text(text_x, 18,
+                         text=name,
+                         fill=pal["TEXT_PRI"],
+                         font=FONT_HEAD,
+                         anchor="w")
 
-    def _recolor(self, w, bg):
-        try: w.config(bg=bg)
-        except Exception: pass
-        for c in w.winfo_children():
-            self._recolor(c, bg)
+        # ── Size badge — anchored to top-right (before delete button) ─────────
+        badge_w  = len(size) * 6 + 16
+        badge_x2 = W - del_margin - 4
+        badge_x1 = badge_x2 - badge_w
+        by1, by2 = 9, 27
+        _rrect(self, badge_x1, by1, badge_x2, by2, 7,
+               fill=pal["BG_DARK"], outline=ACCENT2, width=1)
+        self.create_text((badge_x1 + badge_x2) // 2, (by1 + by2) // 2,
+                         text=size, fill=ACCENT2,
+                         font=("Courier New", 7, "bold"))
+
+        # ── Path (truncated) ─────────────────────────────────────────────────
+        max_chars = max(10, (W - del_margin - text_x - 10) // 6)
+        path_disp = path if len(path) <= max_chars else "…" + path[-max_chars:]
+        self.create_text(text_x, 38,
+                         text=path_disp,
+                         fill=pal["TEXT_DIM"],
+                         font=FONT_SMALL,
+                         anchor="w")
+
+        # ── Status label ──────────────────────────────────────────────────────
+        status_txt = "on disk" if exists else "folder missing"
+        status_col = ACCENT2 if exists else DANGER
+        self.create_text(text_x, 56,
+                         text=f"● {status_txt}",
+                         fill=status_col,
+                         font=("Courier New", 8),
+                         anchor="w")
+
+        # ── Delete button (drawn last so coords are stable) ───────────────────
+        dx = W - del_margin // 2 - 2
+        dy = H // 2
+        del_color = DANGER if self._del_hovered else pal["TEXT_DIM"]
+        del_bg    = "#3A0F1A" if self._del_hovered else pal["BG_DARK"]
+        del_bdr   = DANGER   if self._del_hovered else pal["BORDER"]
+        self._del_coords = (dx - r_del, dy - r_del, dx + r_del, dy + r_del)
+        self.create_oval(dx - r_del, dy - r_del, dx + r_del, dy + r_del,
+                         fill=del_bg, outline=del_bdr)
+        self.create_text(dx, dy,
+                         text="✕", fill=del_color,
+                         font=("Courier New", 9, "bold"))
+
+    # ── Events ────────────────────────────────────────────────────────────────
+    def _set_hover(self, val):
+        self._hovered = val
+        self._draw()
+
+    def _in_del_zone(self, x, y):
+        if not self._del_coords:
+            return False
+        x1, y1, x2, y2 = self._del_coords
+        return x1 <= x <= x2 and y1 <= y <= y2
+
+    def _on_motion(self, event):
+        in_del = self._in_del_zone(event.x, event.y)
+        if in_del != self._del_hovered:
+            self._del_hovered = in_del
+            self.configure(cursor="hand2")
+            self._draw()
+
+    def _on_leave(self, event):
+        changed = self._hovered or self._del_hovered
+        self._hovered     = False
+        self._del_hovered = False
+        if changed:
+            self._draw()
+
+    def _on_click(self, event):
+        if self._in_del_zone(event.x, event.y):
+            self._on_delete(self._project)
+        else:
+            self._on_select(self._project)
+
+    def _on_dclick(self, event):
+        if not self._in_del_zone(event.x, event.y):
+            self._on_open(self._project)
 
 
 # ─── Editor picker ────────────────────────────────────────────────────────────
@@ -734,61 +990,18 @@ class EditorPickerDialog(tk.Toplevel):
                       fill="#FFFFFF", font=FONT_HEAD)
 
 
-# ─── Theme toggle ─────────────────────────────────────────────────────────────
 # ─── Help dialog ─────────────────────────────────────────────────────────────
 class HelpDialog(tk.Toplevel):
-    """Full help reference for Alce Project Manager."""
-
     SECTIONS = [
-        ("OVERVIEW", """Alce Project Manager lets you create, open and manage local copies of the AlceEngine-Project repository. Every copy is fully detached from the original — no Git history, no remote connection — so you can start a brand-new project from it without any ties to the source repo."""),
-
-        ("NEW  —  Clone a project", """Creates a new local copy of the AlceEngine-Project repository.
-
-1. Click NEW and enter a name for your project.
-2. The repo is cloned into your workspace folder.
-3. The .git folder is deleted automatically, so the copy has NO connection to the original repository.
-4. You can open it in any editor, run git init, and start fresh.
-
-The copy is independent: changes you make here never affect the original repo."""),
-
-        ("OPEN  —  Open in editor", """Opens the selected project folder in your preferred code editor.
-
-• Single-click a project to select it, then press OPEN.
-• Double-click a project to select and open it immediately.
-• If no editor is configured, the app will auto-detect one (VS Code, Cursor, PyCharm…) and ask you to confirm, or let you browse for an executable.
-• Your choice is saved and reused automatically next time."""),
-
-        ("DELETE  —  Remove a project", """Permanently deletes the selected project folder from disk and removes it from the list.
-
-⚠  This cannot be undone. The folder and all its contents are deleted.
-
-If the folder cannot be removed (e.g. a file is open), the app will ask whether to remove just the list entry without touching the folder."""),
-
-        ("UPDATE  —  Create a remote branch", """Creates a new branch directly on the AlceEngine-Project remote repository.
-
-• Enter the branch name and press Confirm.
-• The app clones the repo to a temporary folder, creates the branch, pushes it, then deletes the temp folder.
-• main and master are permanently protected — this operation will never touch either of them.
-
-Use this to propose or track changes on the upstream repo without affecting your local copies."""),
-
-        ("WORKSPACE", """The workspace is the folder where all new project copies are created.
-
-Click the path shown under WORKSPACE in the sidebar to open a folder picker and change it. The setting is saved between sessions."""),
-
-        ("EDITOR", """The preferred editor used by the OPEN action and double-click.
-
-Click the editor name under EDITOR in the sidebar to open the editor picker. The picker shows all supported editors and highlights which ones are installed on your system.
-
-Supported: VS Code, Visual Studio, Cursor, Sublime Text, Notepad++, PyCharm, Neovim, Vim, Atom, or any custom executable."""),
-
-        ("PROJECT ICONS", """Each project card can display a custom icon.
-
-If the project folder contains exactly one file named icon.ico (anywhere in its subfolder tree), that icon is shown on the card. If there are zero or more than one, the default Alce icon is used instead."""),
-
-        ("DARK / LIGHT THEME", """Click the DARK / LIGHT toggle in the top-right corner of the window to switch between themes. The preference is saved between sessions.
-
-The app also detects your OS theme on first launch (Windows, macOS, Linux)."""),
+        ("OVERVIEW", "Alce Project Manager lets you create, open and manage local copies of the AlceEngine-Project repository. Every copy is fully detached from the original — no Git history, no remote connection — so you can start a brand-new project from it without any ties to the source repo."),
+        ("NEW  —  Clone a project", "Creates a new local copy of the AlceEngine-Project repository.\n\n1. Click NEW and enter a name for your project.\n2. The repo is cloned into your workspace folder.\n3. The .git folder is deleted automatically, so the copy has NO connection to the original repository.\n4. You can open it in any editor, run git init, and start fresh.\n\nThe copy is independent: changes you make here never affect the original repo."),
+        ("OPEN  —  Open in editor", "Opens the selected project folder in your preferred code editor.\n\n• Single-click a project to select it, then press OPEN.\n• Double-click a project to select and open it immediately.\n• If no editor is configured, the app will auto-detect one and ask you to confirm, or let you browse for an executable.\n• Your choice is saved and reused automatically next time."),
+        ("DELETE  —  Remove a project", "Permanently deletes the selected project folder from disk and removes it from the list.\n\n⚠  This cannot be undone. The folder and all its contents are deleted.\n\nIf the folder cannot be removed (e.g. a file is open), the app will ask whether to remove just the list entry without touching the folder."),
+        ("UPDATE  —  Push changes to remote branch", "Creates a new branch on the remote repository containing only the relevant files from the selected project.\n\nFiles pushed:\n  • Source/Alce/  (entire subtree)\n  • Build/cli.py\n\nAll other files in the remote tree are excluded from that branch.\n\n• Select a project first, then click UPDATE.\n• Enter the desired branch name.\n• main and master are permanently protected.\n• If either required path is missing in your project, the operation is aborted before touching the remote."),
+        ("WORKSPACE", "The workspace is the folder where all new project copies are created.\n\nClick the path shown under WORKSPACE in the sidebar to open a folder picker and change it. The setting is saved between sessions."),
+        ("EDITOR", "The preferred editor used by the OPEN action and double-click.\n\nClick the editor name under EDITOR in the sidebar to open the editor picker. The picker shows all supported editors and highlights which ones are installed on your system.\n\nSupported: VS Code, Visual Studio, Cursor, Sublime Text, Notepad++, PyCharm, Neovim, Vim, Atom, or any custom executable."),
+        ("PROJECT ICONS", "Each project card can display a custom icon.\n\nIf the project folder contains exactly one file named icon.ico (anywhere in its subfolder tree), that icon is shown on the card. If there are zero or more than one, the default Alce icon is used instead."),
+        ("DARK / LIGHT THEME", "Click the DARK / LIGHT toggle in the top-right corner of the window to switch between themes. The preference is saved between sessions.\n\nThe app also detects your OS theme on first launch (Windows, macOS, Linux)."),
     ]
 
     def __init__(self, parent):
@@ -799,22 +1012,16 @@ The app also detects your OS theme on first launch (Windows, macOS, Linux)."""),
         self.configure(bg=pal["BG_DARK"])
         self.resizable(True, True)
         self.grab_set()
-
         self.update_idletasks()
-        pw = parent.winfo_width()
-        ph = parent.winfo_height()
-        px = parent.winfo_x()
-        py = parent.winfo_y()
+        pw = parent.winfo_width(); ph = parent.winfo_height()
+        px = parent.winfo_x();    py = parent.winfo_y()
         w, h = min(700, pw - 40), min(580, ph - 40)
-        x = px + (pw - w) // 2
-        y = py + (ph - h) // 2
+        x = px + (pw - w) // 2;  y = py + (ph - h) // 2
         self.geometry(f"{w}x{h}+{x}+{y}")
         self.minsize(500, 400)
-
         self._build(pal)
 
     def _build(self, pal):
-        # Title bar
         title_f = tk.Frame(self, bg=pal["BG_PANEL"])
         title_f.pack(fill="x")
         tk.Label(title_f, text="?  HELP", fg=ACCENT,
@@ -829,22 +1036,17 @@ The app also detects your OS theme on first launch (Windows, macOS, Linux)."""),
         close_btn.bind("<Button-1>", lambda _: self.destroy())
         close_btn.bind("<Enter>",    lambda _: close_btn.config(fg=DANGER))
         close_btn.bind("<Leave>",    lambda _: close_btn.config(fg=pal["TEXT_DIM"]))
-
         tk.Frame(self, bg=pal["BORDER"], height=1).pack(fill="x")
 
-        # Scrollable content
-        outer = tk.Frame(self, bg=pal["BG_DARK"])
+        outer  = tk.Frame(self, bg=pal["BG_DARK"])
         outer.pack(fill="both", expand=True)
-
-        canvas = tk.Canvas(outer, bg=pal["BG_DARK"],
-                           highlightthickness=0, bd=0)
-        sb = tk.Scrollbar(outer, orient="vertical", command=canvas.yview,
-                          bg=pal["BG_PANEL"], troughcolor=pal["BG_DARK"], width=6)
+        canvas = tk.Canvas(outer, bg=pal["BG_DARK"], highlightthickness=0, bd=0)
+        sb     = tk.Scrollbar(outer, orient="vertical", command=canvas.yview,
+                              bg=pal["BG_PANEL"], troughcolor=pal["BG_DARK"], width=6)
         canvas.configure(yscrollcommand=sb.set)
         canvas.pack(side="left", fill="both", expand=True)
         sb.pack(side="right", fill="y")
-
-        inner = tk.Frame(canvas, bg=pal["BG_DARK"])
+        inner  = tk.Frame(canvas, bg=pal["BG_DARK"])
         win_id = canvas.create_window((0, 0), window=inner, anchor="nw")
         inner.bind("<Configure>",
             lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
@@ -856,24 +1058,17 @@ The app also detects your OS theme on first launch (Windows, macOS, Linux)."""),
         for i, (heading, body) in enumerate(self.SECTIONS):
             sec = tk.Frame(inner, bg=pal["BG_CARD"])
             sec.pack(fill="x", padx=16, pady=(12 if i == 0 else 6, 0))
-
-            # Section header with left accent bar
             hdr_f = tk.Frame(sec, bg=pal["BG_CARD"])
             hdr_f.pack(fill="x")
             tk.Frame(hdr_f, bg=ACCENT, width=3).pack(side="left", fill="y")
             tk.Label(hdr_f, text=f"  {heading}", fg=ACCENT,
                      bg=pal["BG_CARD"], font=FONT_HEAD,
                      anchor="w").pack(side="left", pady=8)
-
             tk.Frame(sec, bg=pal["BORDER"], height=1).pack(fill="x", padx=8)
-
-            # Body text
             tk.Label(sec, text=body, fg=pal["TEXT_SEC"],
                      bg=pal["BG_CARD"], font=FONT_SMALL,
                      justify="left", wraplength=620,
                      anchor="w").pack(fill="x", padx=12, pady=(6, 10))
-
-        # Bottom padding
         tk.Frame(inner, bg=pal["BG_DARK"], height=16).pack()
 
 
@@ -886,24 +1081,20 @@ class AlceManager(tk.Tk):
         self.geometry("980x700")
         self.minsize(820, 580)
 
-        # Window icon — Ekrol34.ico (author's logo as window icon)
         _ekrol_ico = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Ekrol34.ico")
         if os.path.exists(_ekrol_ico):
             try: self.iconbitmap(_ekrol_ico)
             except Exception: pass
 
-        # Load icon.ico PNG payload → tk.PhotoImage for card thumbnails
-        self._card_icon = self._load_icon_img()
-
-        # Ekrol34 footer logo
-        self._logo_img = self._load_b64_img(_LOGO_B64, subsample=10)
-
-        self._config   = load_config()
-        self._projects = self._config.get("projects", [])
-        self._selected = None
-        self._cards    = []
-        self._btns     = []
-        self._proj_images = []   # strong refs to per-project PhotoImages
+        self._card_icon   = self._load_icon_img()
+        self._logo_img    = self._load_b64_img(_LOGO_B64, subsample=10)
+        self._config      = load_config()
+        self._projects    = self._config.get("projects", [])
+        self._selected    = None
+        self._cards       = []
+        self._btns        = []
+        self._proj_images = []
+        self._empty_state = None
 
         saved = self._config.get("theme", "system")
         self._theme_pref   = saved
@@ -917,10 +1108,6 @@ class AlceManager(tk.Tk):
     # ── Image helpers ─────────────────────────────────────────────────────────
     @staticmethod
     def _find_project_ico(project_path):
-        """
-        Walk project_path looking for files named 'icon.ico' (case-insensitive).
-        Returns the path if exactly one is found, None otherwise.
-        """
         if not os.path.isdir(project_path):
             return None
         found = []
@@ -930,13 +1117,12 @@ class AlceManager(tk.Tk):
                     if fname.lower() == "icon.ico":
                         found.append(os.path.join(dirpath, fname))
                         if len(found) > 1:
-                            return None   # more than one → use generic
+                            return None
         except Exception:
             return None
         return found[0] if len(found) == 1 else None
 
     def _ico_to_photoimage(self, ico_path):
-        """Extract the largest PNG frame from an .ico file and return a small PhotoImage."""
         try:
             with open(ico_path, "rb") as f:
                 data = f.read()
@@ -958,12 +1144,10 @@ class AlceManager(tk.Tk):
         return None
 
     def _load_icon_img(self):
-        """Load the generic icon.ico that lives next to this script."""
         ico_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "icon.ico")
         return self._ico_to_photoimage(ico_path)
 
     def _load_b64_img(self, b64, subsample=1):
-        """Load a base64-encoded PNG into a tk.PhotoImage."""
         try:
             raw = base64.b64decode(b64)
             img = tk.PhotoImage(data=base64.b64encode(raw).decode())
@@ -975,7 +1159,6 @@ class AlceManager(tk.Tk):
 
     # ── Theme ─────────────────────────────────────────────────────────────────
     def _cycle_theme(self):
-        # Toggle directly between dark and light (system pref collapses to its resolved value)
         self._active_theme = "light" if self._active_theme == "dark" else "dark"
         self._theme_pref   = self._active_theme
         self._config["theme"] = self._active_theme
@@ -1001,7 +1184,9 @@ class AlceManager(tk.Tk):
         self._refresh_list()
 
     def _mass_recolor(self, w, bg):
-        if w.__class__.__name__ in ("IconBtn", "ThemeToggle"): return
+        skip = ("IconBtn", "ThemeToggle", "ProjectCard", "EmptyState")
+        if w.__class__.__name__ in skip:
+            return
         try: w.config(bg=bg)
         except Exception: pass
         for c in w.winfo_children():
@@ -1011,24 +1196,24 @@ class AlceManager(tk.Tk):
     def _build_ui(self):
         pal = self.palette
 
-        # Header
         hdr = tk.Frame(self, bg=pal["BG_DARK"])
         hdr.pack(fill="x", padx=24, pady=(20, 0))
-        tk.Label(hdr, text="ALCE",             fg=ACCENT,       bg=pal["BG_DARK"], font=FONT_TITLE).pack(side="left")
-        self._title_lbl = tk.Label(hdr, text=" PROJECT MANAGER", fg=pal["TEXT_PRI"], bg=pal["BG_DARK"], font=FONT_TITLE)
+        tk.Label(hdr, text="ALCE", fg=ACCENT, bg=pal["BG_DARK"], font=FONT_TITLE).pack(side="left")
+        self._title_lbl = tk.Label(hdr, text=" PROJECT MANAGER", fg=pal["TEXT_PRI"],
+                                   bg=pal["BG_DARK"], font=FONT_TITLE)
         self._title_lbl.pack(side="left")
-        tk.Label(hdr, text=f"  ·  {REPO_URL}", fg=pal["TEXT_SEC"], bg=pal["BG_DARK"], font=FONT_SMALL).pack(side="left", pady=(6,0))
+        tk.Label(hdr, text=f"  ·  {REPO_URL}", fg=pal["TEXT_SEC"],
+                 bg=pal["BG_DARK"], font=FONT_SMALL).pack(side="left", pady=(6, 0))
         self._theme_toggle = ThemeToggle(hdr, self._active_theme, self._cycle_theme, pal["BG_DARK"])
-        self._theme_toggle.pack(side="right", pady=(6,0), padx=(0,0))
+        self._theme_toggle.pack(side="right", pady=(6, 0))
 
-        # Help button
         help_btn = tk.Canvas(hdr, width=28, height=28, bg=pal["BG_DARK"],
                              highlightthickness=0, cursor="hand2")
-        help_btn.pack(side="right", pady=(6,0), padx=(0, 10))
+        help_btn.pack(side="right", pady=(6, 0), padx=(0, 10))
         self._draw_help_btn(help_btn, False, pal)
-        help_btn.bind("<Button-1>",  lambda _: self._show_help())
-        help_btn.bind("<Enter>",     lambda _: self._draw_help_btn(help_btn, True, self.palette))
-        help_btn.bind("<Leave>",     lambda _: self._draw_help_btn(help_btn, False, self.palette))
+        help_btn.bind("<Button-1>", lambda _: self._show_help())
+        help_btn.bind("<Enter>",    lambda _: self._draw_help_btn(help_btn, True, self.palette))
+        help_btn.bind("<Leave>",    lambda _: self._draw_help_btn(help_btn, False, self.palette))
         self._help_btn = help_btn
         Tooltip(help_btn, "Open the user guide")
 
@@ -1050,10 +1235,10 @@ class AlceManager(tk.Tk):
         sidebar.pack_propagate(False)
         self._sidebar = sidebar
 
-        # Workspace
         ws_f = tk.Frame(sidebar, bg=pal["BG_PANEL"])
         ws_f.pack(fill="x", padx=12, pady=(16, 0))
-        tk.Label(ws_f, text="WORKSPACE", fg=pal["TEXT_DIM"], bg=pal["BG_PANEL"], font=FONT_SMALL).pack(anchor="w")
+        tk.Label(ws_f, text="WORKSPACE", fg=pal["TEXT_DIM"],
+                 bg=pal["BG_PANEL"], font=FONT_SMALL).pack(anchor="w")
         self._ws_var = tk.StringVar(value=self._config.get("workspace", ""))
         self._ws_lbl = tk.Label(ws_f, textvariable=self._ws_var, fg=pal["TEXT_SEC"],
                                 bg=pal["BG_PANEL"], font=FONT_MONO, wraplength=170,
@@ -1067,10 +1252,10 @@ class AlceManager(tk.Tk):
 
         tk.Frame(sidebar, bg=pal["BORDER"], height=1).pack(fill="x", padx=12, pady=10)
 
-        # Editor
         ed_f = tk.Frame(sidebar, bg=pal["BG_PANEL"])
         ed_f.pack(fill="x", padx=12, pady=(0, 4))
-        tk.Label(ed_f, text="EDITOR", fg=pal["TEXT_DIM"], bg=pal["BG_PANEL"], font=FONT_SMALL).pack(anchor="w")
+        tk.Label(ed_f, text="EDITOR", fg=pal["TEXT_DIM"],
+                 bg=pal["BG_PANEL"], font=FONT_SMALL).pack(anchor="w")
         self._editor_var = tk.StringVar(value=self._editor_label())
         self._ed_lbl = tk.Label(ed_f, textvariable=self._editor_var, fg=ACCENT2,
                                 bg=pal["BG_PANEL"], font=FONT_MONO, cursor="hand2")
@@ -1083,7 +1268,6 @@ class AlceManager(tk.Tk):
 
         tk.Frame(sidebar, bg=pal["BORDER"], height=1).pack(fill="x", padx=12, pady=10)
 
-        # Buttons
         btns = tk.Frame(sidebar, bg=pal["BG_PANEL"])
         btns.pack(fill="x", padx=12)
         self._btns.clear()
@@ -1091,7 +1275,7 @@ class AlceManager(tk.Tk):
             ("NEW",    "⊕", ACCENT,  self._action_new,    "Clone the repo as a new detached project"),
             ("OPEN",   "▶", ACCENT3, self._action_open,   "Open selected project in your code editor"),
             ("DELETE", "⊘", DANGER,  self._action_delete, "Permanently delete the selected project from disk"),
-            ("UPDATE", "⟳", ACCENT2, self._action_update, "Create a new branch on the remote repository"),
+            ("UPDATE", "⟳", ACCENT2, self._action_update, "Push Source/Alce and Build/cli.py from selected project to a new remote branch"),
         ]:
             b = IconBtn(btns, text, icon, color, cmd,
                         width=174, bg=pal["BG_PANEL"], tooltip=tip)
@@ -1102,7 +1286,7 @@ class AlceManager(tk.Tk):
         for line in ["NEW    →  clone repo",
                      "OPEN   →  open in editor",
                      "DELETE →  remove local copy",
-                     "UPDATE →  create remote branch"]:
+                     "UPDATE →  push to remote branch"]:
             tk.Label(sidebar, text=line, fg=pal["TEXT_DIM"], bg=pal["BG_PANEL"],
                      font=("Courier New", 7)).pack(anchor="w", padx=14)
 
@@ -1114,7 +1298,6 @@ class AlceManager(tk.Tk):
         panel.columnconfigure(0, weight=1)
         self._panel = panel
 
-        # List
         lf = tk.Frame(panel, bg=pal["BG_DARK"])
         lf.grid(row=0, column=0, sticky="nsew")
         lf.rowconfigure(1, weight=1)
@@ -1122,8 +1305,10 @@ class AlceManager(tk.Tk):
 
         hdr = tk.Frame(lf, bg=pal["BG_DARK"])
         hdr.grid(row=0, column=0, sticky="ew", pady=(0, 8))
-        tk.Label(hdr, text="PROJECTS", fg=pal["TEXT_DIM"], bg=pal["BG_DARK"], font=FONT_SMALL).pack(side="left")
-        self._count_lbl = tk.Label(hdr, text="0", fg=ACCENT, bg=pal["BG_DARK"], font=FONT_SMALL)
+        tk.Label(hdr, text="PROJECTS", fg=pal["TEXT_DIM"],
+                 bg=pal["BG_DARK"], font=FONT_SMALL).pack(side="left")
+        self._count_lbl = tk.Label(hdr, text="0", fg=ACCENT,
+                                   bg=pal["BG_DARK"], font=FONT_SMALL)
         self._count_lbl.pack(side="left", padx=(6, 0))
 
         lc = tk.Frame(lf, bg=pal["BG_DARK"])
@@ -1131,7 +1316,8 @@ class AlceManager(tk.Tk):
         lc.rowconfigure(0, weight=1)
         lc.columnconfigure(0, weight=1)
 
-        self._canvas = tk.Canvas(lc, bg=pal["BG_DARK"], highlightthickness=0, bd=0)
+        self._canvas = tk.Canvas(lc, bg=pal["BG_DARK"],
+                                 highlightthickness=0, bd=0)
         sb = tk.Scrollbar(lc, orient="vertical", command=self._canvas.yview,
                           bg=pal["BG_PANEL"], troughcolor=pal["BG_DARK"], width=6)
         self._canvas.configure(yscrollcommand=sb.set)
@@ -1139,7 +1325,8 @@ class AlceManager(tk.Tk):
         sb.grid(row=0, column=1, sticky="ns")
 
         self._list_inner = tk.Frame(self._canvas, bg=pal["BG_DARK"])
-        self._canvas_win = self._canvas.create_window((0,0), window=self._list_inner, anchor="nw")
+        self._canvas_win = self._canvas.create_window(
+            (0, 0), window=self._list_inner, anchor="nw")
         self._list_inner.bind("<Configure>",
             lambda e: self._canvas.configure(scrollregion=self._canvas.bbox("all")))
         self._canvas.bind("<Configure>",
@@ -1147,11 +1334,10 @@ class AlceManager(tk.Tk):
         self._canvas.bind_all("<MouseWheel>",
             lambda e: self._canvas.yview_scroll(int(-1*(e.delta/120)), "units"))
 
-        # Log
         log_frame = tk.Frame(panel, bg=pal["LOG_BG"])
         log_frame.grid(row=1, column=0, sticky="ew", pady=(12, 0))
-        tk.Label(log_frame, text="LOG", fg=pal["TEXT_DIM"], bg=pal["LOG_BG"],
-                 font=FONT_SMALL).pack(anchor="w", padx=10, pady=(6, 0))
+        tk.Label(log_frame, text="LOG", fg=pal["TEXT_DIM"],
+                 bg=pal["LOG_BG"], font=FONT_SMALL).pack(anchor="w", padx=10, pady=(6, 0))
         self._log_text = tk.Text(log_frame, height=6, bg=pal["LOG_BG"], fg=pal["LOG_FG"],
                                  font=FONT_MONO, relief="flat", state="disabled",
                                  bd=0, insertbackground=ACCENT, wrap="word")
@@ -1161,7 +1347,6 @@ class AlceManager(tk.Tk):
         self._log_text.tag_config("info", foreground=ACCENT)
         self._log_text.tag_config("warn", foreground=WARNING)
 
-        # Progress bar
         sty = ttk.Style()
         sty.theme_use("default")
         sty.configure("Alce.Horizontal.TProgressbar",
@@ -1175,16 +1360,13 @@ class AlceManager(tk.Tk):
         tk.Frame(self, bg=pal["BORDER"], height=1).pack(fill="x", side="bottom")
         self._footer = tk.Frame(self, bg=pal["BG_PANEL"])
         self._footer.pack(fill="x", side="bottom")
-
         inner = tk.Frame(self._footer, bg=pal["BG_PANEL"])
         inner.pack(fill="x", padx=18, pady=6)
-
         if self._logo_img:
             logo_lbl = tk.Label(inner, image=self._logo_img,
                                 bg=pal["BG_PANEL"], cursor="hand2")
             logo_lbl.pack(side="left", padx=(0, 6))
             logo_lbl.bind("<Button-1>", lambda _: self._open_url(AUTHOR_URL))
-
         author = tk.Label(inner, text=f"by Ekrol34  ·  {AUTHOR_URL}",
                           fg=pal["TEXT_DIM"], bg=pal["BG_PANEL"],
                           font=FONT_SMALL, cursor="hand2")
@@ -1192,7 +1374,6 @@ class AlceManager(tk.Tk):
         author.bind("<Button-1>", lambda _: self._open_url(AUTHOR_URL))
         author.bind("<Enter>",    lambda _: author.config(fg=ACCENT))
         author.bind("<Leave>",    lambda _: author.config(fg=pal["TEXT_DIM"]))
-
         tk.Label(inner, text="Alce Project Manager  v1.0",
                  fg=pal["TEXT_DIM"], bg=pal["BG_PANEL"],
                  font=FONT_SMALL).pack(side="right")
@@ -1235,46 +1416,57 @@ class AlceManager(tk.Tk):
     def _stop_progress(self):  self._progress.stop()
 
     def _refresh_list(self):
-        for w in self._cards: w.destroy()
+        # Stop and destroy empty-state if active
+        if self._empty_state is not None:
+            try: self._empty_state.stop_anim()
+            except Exception: pass
+            try: self._empty_state.destroy()
+            except Exception: pass
+            self._empty_state = None
+
+        for w in self._cards:
+            w.destroy()
         self._cards.clear()
-        self._selected = None
-        # Release previously loaded per-project images
-        self._proj_images = []   # list keeps strong refs alive for the lifetime of the cards
+        self._selected    = None
+        self._proj_images = []
         pal = self.palette
         self._canvas.configure(bg=pal["BG_DARK"])
         self._list_inner.configure(bg=pal["BG_DARK"])
 
         if not self._projects:
-            tk.Label(self._list_inner,
-                     text="No projects yet.\nPress NEW to create the first one.",
-                     fg=pal["TEXT_DIM"], bg=pal["BG_DARK"],
-                     font=FONT_BODY, justify="center").pack(expand=True, pady=40)
+            # ── Animated empty state ─────────────────────────────────────────
+            es = EmptyState(self._list_inner, pal, self._action_new)
+            # Fixed height so the inner frame doesn't expand indefinitely.
+            # The canvas will stretch inside the scrollable viewport.
+            es.pack(fill="x")
+            es.configure(height=340)
+            self._empty_state = es
+            self.after(80, es.start_anim)
         else:
             for p in self._projects:
-                # Resolve icon: project-specific if exactly one icon.ico inside it
                 proj_path = p.get("ruta", "")
                 proj_ico  = self._find_project_ico(proj_path)
                 if proj_ico:
                     icon_img = self._ico_to_photoimage(proj_ico)
                     if icon_img:
-                        self._proj_images.append(icon_img)   # keep alive
+                        self._proj_images.append(icon_img)
                     else:
                         icon_img = self._card_icon
                 else:
-                    icon_img = self._card_icon   # generic fallback
+                    icon_img = self._card_icon
+
                 card = ProjectCard(self._list_inner, p,
                                    on_select=self._select_project,
                                    on_delete=self._delete_confirm,
                                    on_open=self._open_project,
                                    palette=pal,
                                    icon_img=icon_img)
-                card.pack(fill="x", pady=(0, 4))
+                card.pack(fill="x", pady=(0, 6))
                 self._cards.append(card)
 
         self._count_lbl.config(text=str(len(self._projects)), bg=pal["BG_DARK"])
 
     def _open_project(self, project):
-        """Called on double-click — select then open in editor."""
         self._select_project(project)
         self._action_open()
 
@@ -1414,31 +1606,62 @@ class AlceManager(tk.Tk):
             daemon=True).start()
 
     def _action_update(self):
-        branch = simpledialog.askstring("New Remote Branch",
-            "Branch name to create on the remote repository:\n"
-            "⚠  'main' and 'master' are protected and cannot be used.",
+        # ── Require a project selection first ─────────────────────────────────
+        if not self._selected:
+            messagebox.showinfo("No selection",
+                "Select a project first.\n\n"
+                "UPDATE pushes Source/Alce and Build/cli.py "
+                "from the selected project to a new remote branch.")
+            return
+
+        project_name = self._selected.get("nombre", "?")
+        project_path = self._selected.get("ruta",   "")
+
+        if not os.path.isdir(project_path):
+            messagebox.showerror("Folder missing",
+                f"The folder for project '{project_name}' was not found:\n{project_path}")
+            return
+
+        branch = simpledialog.askstring(
+            "New Remote Branch",
+            f"Branch name to create on the remote repository.\n"
+            f"Source project:  {project_name}\n\n"
+            f"Files that will be pushed:\n"
+            f"  • Source/Alce/  (entire subtree)\n"
+            f"  • Build/cli.py\n\n"
+            f"⚠  'main' and 'master' are protected.",
             parent=self)
-        if not branch or not branch.strip(): return
+
+        if not branch or not branch.strip():
+            return
         branch = branch.strip()
+
         if branch.lower() in ("main", "master"):
             messagebox.showerror("Protected branch",
                 "Cannot create a branch named 'main' or 'master'.\n"
                 "This program never operates on the main branch.")
             return
+
         self._log_clear()
-        self._log(f"► UPDATE · create branch '{branch}'", "info")
+        self._log(f"► UPDATE · project '{project_name}' → branch '{branch}'", "info")
         self._log(f"  Repository: {REPO_URL}", "info")
-        self._log("  PROTECTION: main will never be touched ✓", "warn")
+        self._log(f"  Pushing:  Source/Alce/  +  Build/cli.py", "info")
+        self._log("  PROTECTION: main/master will never be touched ✓", "warn")
         self._start_progress()
 
         def done(ok, msg):
             self._stop_progress()
-            if ok: self._log(f"  Branch '{msg}' pushed to remote ✓", "ok")
-            else:  self._log(f"  ERROR: {msg}", "err")
+            if ok:
+                self._log(f"  Branch '{msg}' pushed to remote ✓", "ok")
+            else:
+                self._log(f"  ERROR: {msg}", "err")
 
-        threading.Thread(target=create_branch,
-            args=(branch, lambda m: self.after(0, self._log, m), done),
-            daemon=True).start()
+        threading.Thread(
+            target=create_branch,
+            args=(branch, project_path,
+                  lambda m: self.after(0, self._log, m), done),
+            daemon=True
+        ).start()
 
 
 # ─── Entry point ──────────────────────────────────────────────────────────────
