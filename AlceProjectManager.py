@@ -21,6 +21,11 @@ except ImportError:
     print("Please install gitpython: pip install gitpython")
     sys.exit(1)
 
+def resource_path(relative):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative)
+    return os.path.join(os.path.abspath("."), relative)
+
 # ─── Constants ────────────────────────────────────────────────────────────────
 REPO_URL    = "https://github.com/Ekrol34/AlceEngine"
 AUTHOR_URL  = "https://github.com/Ekrol34"
@@ -1081,10 +1086,13 @@ class AlceManager(tk.Tk):
         self.geometry("980x700")
         self.minsize(820, 580)
 
-        _ekrol_ico = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Ekrol34.ico")
-        if os.path.exists(_ekrol_ico):
-            try: self.iconbitmap(_ekrol_ico)
-            except Exception: pass
+        # _ekrol_ico = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Ekrol34.ico")
+        _project_ico = resource_path("Ekrol34.ico")
+        if os.path.exists(_project_ico):
+            try:
+                self.iconbitmap(_project_ico)
+            except Exception:
+                pass
 
         self._card_icon   = self._load_icon_img()
         self._logo_img    = self._load_b64_img(_LOGO_B64, subsample=10)

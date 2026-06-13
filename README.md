@@ -1,6 +1,6 @@
 # Alce Project Manager
 
-A desktop GUI tool for managing local copies of the [AlceEngine-Project](https://github.com/Ekrol34/AlceEngine-Project) repository. Built with Python and Tkinter — no web stack, no Electron, just a single script and two icon files.
+A desktop GUI tool for managing local copies of the [AlceEngine-Project](https://github.com/Ekrol34/AlceEngine-Project) repository. Built with Python and Tkinter.
 
 > **Author:** [Ekrol34](https://github.com/Ekrol34)
 
