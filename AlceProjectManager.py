@@ -44,112 +44,6 @@ KNOWN_EDITORS = [
     ("Other (browse...)",  []),
 ]
 
-# ─── icon.ico PNG payload — embedded as base64 ────────────────────────────────
-_ICON_B64 = (
-    "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"
-)
-
-# ─── Ekrol34 logo — PNG from Ekrol34.ico ─────────────────────────────────────
-_LOGO_B64 = (
-    "iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAAAW9yTlQBz6J3mgAAEQhJREFUeNrtnf1z"
-    "FPUdx4MmF0QEFGLDjIr4kCceIskhSMIPHWuLKFpHDysFklGntj/bv8FO+6vSinYadepMO7X1l84o0gFi"
-    "Z5xpgop6yVlIQtAhiFR/6APcneN9unt3ubvdvX2+x93Xy3mPcHff3T3d7+vu9vvd76elBQAAAAAAAAAA"
-    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKqIiBDSMIH6CKBNSb+SKCF1SH/+HKRD"
-    "1kkAnUrmlaSVpAipYdL5c68TAdRPAGuVLAhAfVjIn4N0SAQACAAQACAAQACAAAABAAIABAAIAGaugEwm"
-    "I+l0WpLJpKRSKUIcRz1n1HNHPYcQQJMKYG5uTmKxmAwMDEg0GiXEcdRzRj131HMIATSpAOLxuHR1dar"
-    "/dwhxHfXcUc8hBNCkApiampK+vj5OZuIp6rmjnkMIAAEQBIAAEABBAAgAARAEgAAQAEEACKCJBdB21RLZ"
-    "sOJa6V+1XPpXBi93dayWwc2bGNYzSX9/v7S1tSGAsArgxvaITN67VT7bPSTndu9QMlQmOywzr8mQyTbc"
-    "bVMbbdt5XUy3t2u7nP/JE/K/mX9KKv1NbnKLPsny0U6KSRaSLGRxG7m/mz+fKnksmZ1ck52Ulc/i35Pl"
-    "js0ihck6Ju8nVZqS4ysmlZ3kMz8/L52dnQggzAL46L675YsHh+VCITt1GbbMgi7G9u62Z4y2/YIupu0U"
-    "CVz62X755rOz2tmR+mS0KTOfUhN9e7vnM7p/9DvMlDsmi1gfnaMHir13YUHWrl2LABAACkAACAABGDrc"
-    "cAMIYLjOAhCfApD6CaDsqxAAArAUQGWzYBODIPaUZtgYWwHpBTCn7QS2n5BW3c3JNwKX6DZguz2DQGZ"
-    "TkrggNsABIAAEMBpAARQSQPmMJA4YQYJ7c5e2eL5FIzGLzmZeMbgKUlN2hJT4cDz9+k8bEYDBIKBPAi"
-    "AAIQAAAABAA6QRxz1RhAEMDnHMFIYDMLBIAAEEAIh2YhRgQhIArAIuA9p0J79OICMIHhE2oqAAMHgqON"
-    "5aEFfqCGJYBkD+2bT7aGsFxBkYBEgCmIL4PQCgDsQ3RjT1JBAAAAAASUVORK5CYII="
-)
-
 # ─── Theme definitions ────────────────────────────────────────────────────────
 THEMES = {
     "dark": {
@@ -740,9 +634,10 @@ class ProjectCard(tk.Canvas):
       - Circular delete button on the right
     """
 
-    CARD_H = 76
-    RADIUS = 8
-    BAR_W  = 4
+    CARD_H   = 76
+    RADIUS   = 8
+    BAR_W    = 4
+    ICON_R   = 13   # radius of the project icon circle (was 7 — now larger)
 
     def __init__(self, parent, project, on_select, on_delete, on_open,
                  palette, icon_img=None, **kw):
@@ -808,15 +703,17 @@ class ProjectCard(tk.Canvas):
         _rrect(self, 1, 6, self.BAR_W + 3, H - 6, 3,
                fill=bar_col, outline="")
 
-        # ── Status indicator circle ───────────────────────────────────────────
+        # ── Status indicator circle (now bigger, matches icon size) ──────────
+        r_icon = self.ICON_R
+        dot_x, dot_y = 10 + r_icon, H // 2
         dot_col = SUCCESS if exists else DANGER
-        dot_x, dot_y = 22, H // 2
-        self.create_oval(dot_x - 7, dot_y - 7, dot_x + 7, dot_y + 7,
+        self.create_oval(dot_x - r_icon, dot_y - r_icon, dot_x + r_icon, dot_y + r_icon,
                          fill=dot_col, outline="")
-        self.create_oval(dot_x - 3, dot_y - 3, dot_x + 3, dot_y + 3,
+        inner_r = max(2, r_icon - 4)
+        self.create_oval(dot_x - inner_r, dot_y - inner_r, dot_x + inner_r, dot_y + inner_r,
                          fill="#FFFFFF", outline="")
 
-        # ── Icon image (if any) ───────────────────────────────────────────────
+        # ── Icon image (if any) — drawn on top of the status dot, larger ─────
         if self._icon_img:
             try:
                 self.create_image(dot_x, dot_y, image=self._icon_img, anchor="center")
@@ -824,7 +721,7 @@ class ProjectCard(tk.Canvas):
                 pass
 
         # ── Name (top-left text area) ─────────────────────────────────────────
-        text_x = 38
+        text_x = 16 + r_icon * 2 + 6
         self.create_text(text_x, 18,
                          text=name,
                          fill=pal["TEXT_PRI"],
@@ -1080,22 +977,19 @@ class HelpDialog(tk.Toplevel):
 # ─── Main window ──────────────────────────────────────────────────────────────
 class AlceManager(tk.Tk):
 
+    # Diameter (in px) used to display the default "logo" icon next to each
+    # project card. Increase this to make the card icon bigger.
+    CARD_ICON_SIZE = 26
+
     def __init__(self):
         super().__init__()
         self.title("Alce Project Manager")
         self.geometry("980x700")
         self.minsize(820, 580)
 
-        # _ekrol_ico = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Ekrol34.ico")
-        _project_ico = resource_path("Ekrol34.ico")
-        if os.path.exists(_project_ico):
-            try:
-                self.iconbitmap(_project_ico)
-            except Exception:
-                pass
-
         self._card_icon   = self._load_icon_img()
-        self._logo_img    = self._load_b64_img(_LOGO_B64, subsample=10)
+        self._logo_img    = self._load_logo_img()
+        self._set_window_icon()
         self._config      = load_config()
         self._projects    = self._config.get("projects", [])
         self._selected    = None
@@ -1130,7 +1024,11 @@ class AlceManager(tk.Tk):
             return None
         return found[0] if len(found) == 1 else None
 
-    def _ico_to_photoimage(self, ico_path):
+    def _ico_to_photoimage(self, ico_path, target_px=None):
+        """Loads the largest embedded PNG frame from an .ico file and returns
+        a tk.PhotoImage roughly `target_px` pixels wide (defaults to
+        CARD_ICON_SIZE)."""
+        target_px = target_px or self.CARD_ICON_SIZE
         try:
             with open(ico_path, "rb") as f:
                 data = f.read()
@@ -1145,25 +1043,84 @@ class AlceManager(tk.Tk):
                     best_size = img_size; best_data = img_data
             if best_data:
                 img    = tk.PhotoImage(data=base64.b64encode(best_data).decode())
-                factor = max(1, img.width() // 18)
-                return img.subsample(factor, factor)
+                factor = max(1, img.width() // target_px)
+                return img.subsample(factor, factor) if factor > 1 else img
         except Exception:
             pass
         return None
 
     def _load_icon_img(self):
+        """Loads the default per-card icon shown on project cards.
+        Looks for icon.ico next to the script; falls back to None
+        (the card will simply show its status dot)."""
         ico_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "icon.ico")
-        return self._ico_to_photoimage(ico_path)
+        return self._ico_to_photoimage(ico_path, target_px=self.CARD_ICON_SIZE)
 
-    def _load_b64_img(self, b64, subsample=1):
-        try:
-            raw = base64.b64decode(b64)
-            img = tk.PhotoImage(data=base64.b64encode(raw).decode())
-            if subsample > 1:
-                img = img.subsample(subsample, subsample)
-            return img
-        except Exception:
-            return None
+    def _load_logo_img(self, subsample=None):
+        """Loads the footer logo directly from logo.png on disk.
+
+        Looks first next to the script, then in the PyInstaller bundle
+        (resource_path), falling back to None if not found so the UI keeps
+        working even without the file."""
+        candidates = [
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.png"),
+            resource_path("logo.png"),
+        ]
+        for path in candidates:
+            if os.path.exists(path):
+                try:
+                    img = tk.PhotoImage(file=path)
+                    if subsample and subsample > 1:
+                        img = img.subsample(subsample, subsample)
+                    else:
+                        # Auto-scale down to a sensible footer size if the
+                        # source PNG is larger than ~32px wide.
+                        factor = max(1, img.width() // 32)
+                        if factor > 1:
+                            img = img.subsample(factor, factor)
+                    return img
+                except Exception:
+                    continue
+        return None
+
+    def _set_window_icon(self):
+        """Sets the application icon shown in the window title bar AND the
+        Windows taskbar.
+
+        On Windows, only `iconbitmap()` with a real .ico file reliably
+        controls both the title bar and the taskbar icon, so we look for
+        logo.ico first (next to the script, then in the PyInstaller bundle).
+        If no .ico is available, we fall back to logo.png via
+        `iconphoto()`, which at least sets the title bar icon on
+        Windows/Linux/macOS (taskbar grouping on Windows may still show the
+        default Python icon in that fallback case)."""
+        ico_candidates = [
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.ico"),
+            resource_path("logo.ico"),
+        ]
+        for path in ico_candidates:
+            if os.path.exists(path):
+                try:
+                    self.iconbitmap(path)
+                    return
+                except Exception:
+                    continue
+
+        # No logo.ico found — fall back to logo.png for at least the
+        # title-bar icon (and Linux/macOS taskbar/dock icon).
+        png_candidates = [
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "logo.png"),
+            resource_path("logo.png"),
+        ]
+        for path in png_candidates:
+            if os.path.exists(path):
+                try:
+                    icon_img = tk.PhotoImage(file=path)
+                    self.iconphoto(True, icon_img)
+                    self._window_icon_img = icon_img  # keep a reference
+                    return
+                except Exception:
+                    continue
 
     # ── Theme ─────────────────────────────────────────────────────────────────
     def _cycle_theme(self):

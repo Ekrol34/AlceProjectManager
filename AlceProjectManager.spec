@@ -5,7 +5,7 @@ a = Analysis(
     ['AlceProjectManager.py'],
     pathex=[],
     binaries=[],
-    datas=[('Ekrol34.ico', '.')],
+    datas=[('logo.ico', '.'), ('logo.png', '.'), ('logo.ico', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['Ekrol34.ico'],
+    icon=['logo.ico'],
 )
